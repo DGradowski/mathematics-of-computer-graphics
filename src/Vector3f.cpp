@@ -1,6 +1,7 @@
 #include "Vector3f.h"
 #include <iostream>
 #include <stdexcept>
+#include <cmath>
 
 Vector3f::Vector3f(float x, float y, float z)
 {
