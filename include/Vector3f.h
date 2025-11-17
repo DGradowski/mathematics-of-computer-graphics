@@ -17,14 +17,14 @@ public:
 	void operator+=(const Vector3f& vector);
 	void operator-=(const Vector3f& vector);
 
-	Vector3f operator+(const Vector3f& vector);
-	Vector3f operator-(const Vector3f& vector);
+	Vector3f operator+(const Vector3f& vector) const;
+	Vector3f operator-(const Vector3f& vector) const;
 
 	void operator/=(float f);
 	void operator*=(float f);
 
-	Vector3f operator/(float f);
-	Vector3f operator*(float f);
+	Vector3f operator/(float f) const;
+	Vector3f operator*(float f) const;
 
 	bool operator==(const Vector3f& vector);
 
@@ -32,15 +32,16 @@ public:
 
 	Vector3f normalized();
 
-	Vector3f dot(const Vector3f& vector);
+	Vector3f dot(const Vector3f& vector) const;
 
-	float dotProduct(const Vector3f& vector);
+	float dotProduct(const Vector3f& vector) const;
 
-	Vector3f cross(const Vector3f& vector);
+	Vector3f cross(const Vector3f& vector) const;
 
 	float radAngle(const Vector3f& vector);
 
 	void print();
+
 
 private:
 	float pX, pY, pZ;

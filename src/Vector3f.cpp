@@ -50,7 +50,7 @@ void Vector3f::operator-=(const Vector3f& vector)
 	pZ -= vector.getZ();
 }
 
-Vector3f Vector3f::operator+(const Vector3f& vector)
+Vector3f Vector3f::operator+(const Vector3f& vector) const
 {
 	float x = pX + vector.getX();
 	float y = pY + vector.getY();
@@ -58,7 +58,7 @@ Vector3f Vector3f::operator+(const Vector3f& vector)
 	return Vector3f(x, y, z);
 }
 
-Vector3f Vector3f::operator-(const Vector3f& vector)
+Vector3f Vector3f::operator-(const Vector3f& vector) const
 {
 	float x = pX - vector.getX();
 	float y = pY - vector.getY();
@@ -81,7 +81,7 @@ void Vector3f::operator*=(float f)
 	pZ *= f;
 }
 
-Vector3f Vector3f::operator/(float f)
+Vector3f Vector3f::operator/(float f) const
 {
 	if (f == 0) throw std::invalid_argument("Vector can't be divided by zero");
 	float x = pX / f;
@@ -90,7 +90,7 @@ Vector3f Vector3f::operator/(float f)
 	return Vector3f(x, y, z);
 }
 
-Vector3f Vector3f::operator*(float f)
+Vector3f Vector3f::operator*(float f) const
 {
 	float x = pX * f;
 	float y = pY * f;
@@ -120,7 +120,7 @@ Vector3f Vector3f::normalized()
 	return Vector3f(x, y, z);
 }
 
-Vector3f Vector3f::dot(const Vector3f& vector)
+Vector3f Vector3f::dot(const Vector3f& vector) const
 {
 	float x = pX * vector.getX();
 	float y = pY * vector.getY();
@@ -128,13 +128,13 @@ Vector3f Vector3f::dot(const Vector3f& vector)
 	return Vector3f(x, y, z);
 }
 
-float Vector3f::dotProduct(const Vector3f& vector)
+float Vector3f::dotProduct(const Vector3f& vector) const
 {
 	Vector3f result = dot(vector);
 	return result.getX() + result.getY() + result.getZ();
 }
 
-Vector3f Vector3f::cross(const Vector3f& vector)
+Vector3f Vector3f::cross(const Vector3f& vector) const
 {
 	float x = pY * vector.getZ() - pZ * vector.getY();
 	float y = pZ * vector.getX() - pX * vector.getZ();
