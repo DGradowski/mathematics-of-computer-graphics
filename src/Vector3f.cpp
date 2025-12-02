@@ -142,7 +142,7 @@ Vector3f Vector3f::cross(const Vector3f& vector) const
 	return Vector3f(x, y, z);
 }
 
-float Vector3f::radAngle(const Vector3f& vector)
+float Vector3f::radAngle(const Vector3f& vector) const
 {
 	float dotProd = dotProduct(vector);
 	float lenA = length();
@@ -154,6 +154,10 @@ float Vector3f::radAngle(const Vector3f& vector)
 	return std::acos(dotProd / div);
 }
 
+float Vector3f::degAngle(const Vector3f& vector) const
+{
+	return radAngle(vector) * 180.0f / (float)M_PI;
+}
 
 void Vector3f::print()
 {

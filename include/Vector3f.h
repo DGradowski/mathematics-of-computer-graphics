@@ -3,10 +3,9 @@
 #ifndef VECTOR3F_H
 #define VECTOR3F_H
 
-
 class Vector3f {
 public:
-	Vector3f(float x, float y, float z);
+	Vector3f(float x = 0, float y = 0, float z = 0);
 	~Vector3f();
 	Vector3f(const Vector3f& vector);
 
@@ -38,7 +37,9 @@ public:
 
 	Vector3f cross(const Vector3f& vector) const;
 
-	float radAngle(const Vector3f& vector);
+	float radAngle(const Vector3f& vector) const;
+
+	float degAngle(const Vector3f& vector) const;
 
 	void print();
 

@@ -14,9 +14,7 @@ file(GLOB_RECURSE HEADER_FILES
 	 include/*.hpp)
 
 add_executable(CGMath ${HEADER_FILES} ${SOURCE_FILES}
-		src/Vector4f.cpp
-		include/Vector4f.h
-		src/Matrix4x4.cpp
-		include/Matrix4x4.h)
+		include/IntersectionSolver.h
+		src/IntersectionSolver.cpp)
 
 target_include_directories(CGMath PRIVATE include)
