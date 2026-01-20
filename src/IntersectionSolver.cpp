@@ -110,3 +110,48 @@ int IntersectionSolver::FindIntersection_LineSphere(const Vector3f& P_line, cons
     
     return 2;
 }
+
+bool IntersectionSolver::FindIntersection_RayBox(const Vector3f& origin, const Vector3f& dir, const Vector3f& boxMin, const Vector3f& boxMax)
+{
+    float farestPoint = -100000.0f;
+    float closestPoint = 100000.0f;
+
+    Vector3f O = origin;
+    Vector3f D = dir;
+
+    if (abs(D.getX()) > 1e-6) {
+        float f = (boxMin.getX() - O.getX()) / D.getX();
+        float c = (boxMax.getX() - O.getX()) / D.getX();
+        if (f > c) std::swap(f, c);
+        if (f > farestPoint) farestPoint = f;
+        if (c < closestPoint) closestPoint = c;
+    } else if (O.getX() < boxMin.getX() || O.getX() > boxMax.getX()) {
+        return false;
+    }
+
+    if (farestPoint > closestPoint) return false;
+
+    if (abs(D.getY()) > 1e-6) {
+        float f = (boxMin.getY() - O.getY()) / D.getY();
+        float c = (boxMax.getY() - O.getY()) / D.getY();
+        if (f > c) std::swap(f, c);
+        if (f > farestPoint) farestPoint = f;
+        if (c < closestPoint) closestPoint = c;
+    } else if (O.getY() < boxMin.getY() || O.getY() > boxMax.getY()) {
+        return false;
+    }
+
+    if (farestPoint > closestPoint) return false;
+
+    if (abs(D.getZ()) > 1e-6) {
+        float f = (boxMin.getZ() - O.getZ()) / D.getZ();
+        float c = (boxMax.getZ() - O.getZ()) / D.getZ();
+        if (f > c) std::swap(f, c);
+        if (f > farestPoint) farestPoint = f;
+        if (c < closestPoint) closestPoint = c;
+    } else if (O.getZ() < boxMin.getZ() || O.getZ() > boxMax.getZ()) {
+        return false;
+    }
+
+    return farestPoint <= closestPoint && closestPoint > 0;
+}

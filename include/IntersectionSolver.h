@@ -15,4 +15,6 @@ public:
     static bool LineOfIntersection_Point(const Vector3f& N1, float D1, const Vector3f& N2, float D2, Vector3f& point);
 
     static int FindIntersection_LineSphere(const Vector3f& P_line, const Vector3f& V_line, const Vector3f& C_sphere, float R_sphere, Vector3f& intersect1, Vector3f& intersect2);
+
+    static bool FindIntersection_RayBox(const Vector3f& origin, const Vector3f& dir, const Vector3f& boxMin, const Vector3f& boxMax);
 };
